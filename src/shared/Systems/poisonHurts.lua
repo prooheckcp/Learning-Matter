@@ -8,13 +8,10 @@ local Poison = Components.Poison
 
 local function poisonHurts(world: Matter.World)
     for id, health in world:query(Health, Poison) do
-        print(id, health)
-        --[[
+        print(health.amount)
         world:insert(id, health:patch({
-            value = health.value - 0.1
+            amount = health.amount - 0.1
         }))            
-        ]]
-
     end
 end
 
