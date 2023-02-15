@@ -7,7 +7,15 @@ local Constructors = require(ReplicatedStorage.Common.Constructors)
 
 local function setupTags(world: Matter.World)
 	local function spawnBound(instance: Model, component: string)
+        local currentEntityID: string = instance:GetAttribute("serverEntityId")
+
+        if currentEntityID then
+            world:insert(currentEntityID, (Constructors[component] and Constructors[component]() or Components[component]()))
+            return
+        end
+        
 		local id = world:spawn(
+            Components.Model(),
             (Constructors[component] and Constructors[component]() or Components[component]())
         )
 
