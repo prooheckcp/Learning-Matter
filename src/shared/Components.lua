@@ -4,5 +4,5 @@ local Matter = require(ReplicatedStorage.Packages.matter)
 
 return {
     Health = Matter.component(),
-    Poison = Matter.component()
+    Poison = Matter.component(),
 }

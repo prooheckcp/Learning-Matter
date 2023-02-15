@@ -2,6 +2,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 
 local Matter = require(ReplicatedStorage.Packages.matter)
+local setupTags = require(script.setupTags)
 
 local world: Matter.World = Matter.World.new()
 
@@ -18,6 +19,7 @@ for _, child: Instance in ipairs(ReplicatedStorage.Common.Systems:GetChildren())
 end
 
 loop:scheduleSystems(systems)
+setupTags(world)
 
 loop:begin({
     default = RunService.Heartbeat
